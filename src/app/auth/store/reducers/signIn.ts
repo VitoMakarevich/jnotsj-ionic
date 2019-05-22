@@ -27,6 +27,8 @@ export const signInReducer = (state: SignInState = initialState, action: SignInA
         case SignInActionTypeNames.Success:
             return {
                 ...state,
+                // TODO: fix ignore
+                // @ts-ignore
                 user: (action as SignInSuccess).payload,
             }
         case SignInActionTypeNames.Error:
@@ -34,6 +36,8 @@ export const signInReducer = (state: SignInState = initialState, action: SignInA
                 ...state,
                 status: {
                     loading: false,
+                    // TODO: fix ignore
+                    // @ts-ignore
                     error: (action as SignInError).error
                 }
             }
