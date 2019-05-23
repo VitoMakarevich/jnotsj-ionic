@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Actions, Effect, ofType} from '@ngrx/effects';
 import {ApiService} from '../../../service/api.service';
 import {SignInActionNames, SignInActionTypes, SignInBegin, SignInError, SignInSuccess} from '../actions/signIn';
-import {catchError, map, mergeMap, switchMap, tap} from 'rxjs/operators';
+import {catchError, concatMap, map, mergeMap, switchMap, tap} from 'rxjs/operators';
 import {combineLatest, from, Observable, of} from 'rxjs';
 import {SignInResponse} from '../types/SignIn';
 import {StorageService} from '../../../storage/storage.service';
@@ -20,25 +20,22 @@ export class AuthEffects {
             private router: Router,
             private localization: Localization
         ) {}
-
     @Effect()
     signIn$ = this.actions$.pipe(
         ofType(SignInActionNames.Begin),
-        switchMap((action: SignInBegin) => this.api.signIn(action.signInRequest)),
-        switchMap((signInResponse: SignInResponse) => of(this.saveResponseToStorage(signInResponse)).pipe(
-                map(() => signInResponse),
-            )
-        ),
-        map( (signInResponse: SignInResponse) => new SignInSuccess(signInResponse.user)),
-        catchError((error: Error) => {
-            return from([
-                new ToastShow(
-                    this.localization.errorMessages.passwordIsIncorrect,
-                    this.localization.buttonValues.ok,
-                ),
-                new SignInError(error),
-            ])
-        }),
+        mergeMap((action: SignInBegin): Observable<any> => this.api.signIn(action.signInRequest).pipe(
+            tap((response: SignInResponse) => of(this.saveResponseToStorage(response))),
+            map((signInResponse: SignInResponse) => new SignInSuccess(signInResponse.user)),
+            catchError((error: Error) => {
+                return from([
+                    new ToastShow(
+                        this.localization.errorMessages.passwordIsIncorrect,
+                        this.localization.buttonValues.ok,
+                    ),
+                    new SignInError(error),
+                ])
+            }),
+        ))
     )
 
     @Effect({dispatch: false})
