@@ -10,6 +10,7 @@
     "strictNullChecks": true,
     "noImplicitAny": true,
     "emitDecoratorMetadata": true,
+    "noUnusedLocals": true,
     "experimentalDecorators": true,
     "importHelpers": true,
     "target": "es5",

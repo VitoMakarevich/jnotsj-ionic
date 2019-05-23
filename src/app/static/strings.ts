@@ -9,6 +9,7 @@ export class Localization {
 
     public buttonValues = {
         signIn: 'Sign In',
+        ok: 'Ok',
     };
 
     public headers = {
@@ -17,5 +18,6 @@ export class Localization {
 
     public errorMessages = {
         fieldRequired: 'This field is required',
+        passwordIsIncorrect: 'Password is incorrect',
     }
 }

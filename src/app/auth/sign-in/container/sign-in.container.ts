@@ -1,8 +1,8 @@
-import {Component, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Store} from '@ngrx/store';
-import {SignInRequest} from '../../store/types/SignIn';
-import {SignInBegin} from '../../store/actions/signIn';
+import {SignInRequest} from '../../../store/types/SignIn';
 import {RootState} from '../../../reducer';
+import {SignInBegin} from '../../store/actions/signIn';
 
 @Component({
   selector: 'app-sign-in',

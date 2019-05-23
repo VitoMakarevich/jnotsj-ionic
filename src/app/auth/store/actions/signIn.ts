@@ -1,29 +1,31 @@
 import {Action} from '@ngrx/store';
-import {User} from '../../../types/User';
 import {SignInRequest} from '../types/SignIn';
+import {User} from '../../../types/User';
 
-export const SignInActionTypeNames = {
+export const SignInActionNames = {
     Begin: 'SignInBegin',
     Success: 'SignInSuccess',
     Error: 'SignInError',
 }
 
 export class SignInBegin implements Action {
-    readonly type = SignInActionTypeNames.Begin
+    readonly type = SignInActionNames.Begin
 
     constructor(public signInRequest: SignInRequest) {}
 }
 
 export class SignInSuccess implements Action {
-    readonly type = SignInActionTypeNames.Success
+    readonly type = SignInActionNames.Success
 
-    constructor(public payload: User) {}
+    constructor(public user: User) {}
 }
 
 export class SignInError implements Action {
-    readonly type = SignInActionTypeNames.Error
+    readonly type = SignInActionNames.Error
 
     constructor(public error: Error) {}
 }
 
-export type SignInActionTypes = SignInBegin | SignInError | SignInError
+
+
+export type SignInActionTypes = SignInBegin | SignInSuccess | SignInError

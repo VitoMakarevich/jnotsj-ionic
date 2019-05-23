@@ -15,15 +15,15 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {environment} from '../environments/environment';
 import {ApiService} from './service/api.service';
 import {EffectsModule} from '@ngrx/effects';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {HttpClientModule} from '@angular/common/http';
 import {ReactiveFormsModule} from '@angular/forms';
 import {IonicStorageModule} from '@ionic/storage';
-import {StorageService} from './storage/storage.service';
 import {StorageModule} from './storage/storage.module';
-import {HttpInterceptorsProvider} from './authInterceptor';
+import {ToastEffects} from './store/effects/toast';
+import {ToastComponent} from './common/toast/toast.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ToastComponent],
   entryComponents: [],
   imports: [
       BrowserModule,
@@ -31,7 +31,7 @@ import {HttpInterceptorsProvider} from './authInterceptor';
       AppRoutingModule,
       StoreModule.forRoot(rootReducer),
       StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-      EffectsModule.forRoot([]),
+      EffectsModule.forRoot([ToastEffects]),
       HttpClientModule,
       ReactiveFormsModule,
       IonicStorageModule.forRoot({

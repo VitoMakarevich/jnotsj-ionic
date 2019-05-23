@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
-import {User} from '../types/User';
-import {SignInRequest, SignInResponse} from '../auth/store/types/SignIn';
+import {HttpClient} from '@angular/common/http';
+import {SignInRequest, SignInResponse} from '../store/types/SignIn';
 import {Observable} from 'rxjs';
 
 @Injectable({

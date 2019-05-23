@@ -1,7 +1,6 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {Localization} from '../../../static/strings';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {OutputType} from '@angular/core/src/view';
 
 @Component({
   selector: 'app-sign-in-component',

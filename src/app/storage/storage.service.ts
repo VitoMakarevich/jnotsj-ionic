@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
-import {select, Store} from '@ngrx/store';
-import {RootState} from '../reducer';
-import {User} from '../types/User';
 import {Storage} from '@ionic/storage'
-import {SignInResponse} from '../auth/store/types/SignIn';
+import {SignInResponse, UserRole} from '../store/types/SignIn';
 
 @Injectable({
   providedIn: 'root'
@@ -26,5 +23,10 @@ export class StorageService {
   async getToken(): Promise<string | undefined> {
     const user = await this.getUser()
     return user ? user.accessToken : undefined
+  }
+
+  async getRoles(): Promise<UserRole[] | undefined> {
+      const user = await this.getUser()
+      return user ? user.user.roles : undefined
   }
 }

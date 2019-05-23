@@ -1,6 +1,6 @@
 import {User} from '../../../types/User';
 import {Status} from '../../../types/Status';
-import {SignInActionTypeNames, SignInActionTypes, SignInError, SignInSuccess} from '../actions/signIn';
+import {SignInActionNames, SignInActionTypes, SignInError, SignInSuccess} from '../actions/signIn';
 
 export type SignInState = {
     user?: User
@@ -15,7 +15,7 @@ export const initialState: SignInState = {
 
 export const signInReducer = (state: SignInState = initialState, action: SignInActionTypes): SignInState => {
     switch (action.type) {
-        case SignInActionTypeNames.Begin:
+        case SignInActionNames.Begin:
             return {
                 ...state,
                 status: {
@@ -24,14 +24,14 @@ export const signInReducer = (state: SignInState = initialState, action: SignInA
                     error: undefined,
                 }
             }
-        case SignInActionTypeNames.Success:
+        case SignInActionNames.Success:
             return {
                 ...state,
                 // TODO: fix ignore
                 // @ts-ignore
-                user: (action as SignInSuccess).payload,
+                user: (action as SignInSuccess).user,
             }
-        case SignInActionTypeNames.Error:
+        case SignInActionNames.Error:
             return {
                 ...state,
                 status: {

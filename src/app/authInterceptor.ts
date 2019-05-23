@@ -1,13 +1,22 @@
-import {HTTP_INTERCEPTORS, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
+import {
+    HTTP_INTERCEPTORS,
+    HttpErrorResponse,
+    HttpEvent,
+    HttpHandler,
+    HttpInterceptor,
+    HttpRequest,
+    HttpResponse
+} from '@angular/common/http';
 import {StorageService} from './storage/storage.service';
-import {from, Observable} from 'rxjs';
-import {Injectable, Provider} from '@angular/core';
-import {fromPromise} from 'rxjs/internal-compatibility';
-import {switchMap} from 'rxjs/operators';
+import {from, Observable, throwError} from 'rxjs';
+import {Injectable} from '@angular/core';
+import {catchError, filter, switchMap, tap} from 'rxjs/operators';
+import {Router, RouterModule} from '@angular/router';
+import {AppRoutingModule} from './app-routing.module';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-    constructor(private storageService: StorageService) {}
+    constructor(private storageService: StorageService, private router: Router) {}
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         const token$ = from(this.storageService.getToken())
@@ -21,7 +30,17 @@ export class AuthInterceptor implements HttpInterceptor {
                        }
                    })
                 }
-                return next.handle(modifiedRequest)
+                return next
+                    .handle(modifiedRequest)
+                    .pipe(
+                        catchError((httpErrorResponse: HttpErrorResponse) => {
+                            if (httpErrorResponse.status === 401) {
+                                this.router.navigate([`/${AppRoutingModule.routes.authModule.signIn}`])
+                            }
+
+                            return throwError(httpErrorResponse)
+                        })
+                    )
             })
         )
     }
