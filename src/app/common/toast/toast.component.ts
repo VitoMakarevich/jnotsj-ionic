@@ -7,9 +7,8 @@ import {Store} from '@ngrx/store';
 import {toastStateSelector} from '../../store/selectors/toast';
 
 @Component({
+    template: '',
   selector: 'app-toast',
-  templateUrl: './toast.component.html',
-  styleUrls: ['./toast.component.scss'],
 })
 export class ToastComponent implements OnInit, OnDestroy {
   private toastState$: Subscription;

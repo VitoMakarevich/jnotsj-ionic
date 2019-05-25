@@ -1,17 +1,9 @@
-import {
-    HTTP_INTERCEPTORS,
-    HttpErrorResponse,
-    HttpEvent,
-    HttpHandler,
-    HttpInterceptor,
-    HttpRequest,
-    HttpResponse
-} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
 import {StorageService} from './storage/storage.service';
 import {from, Observable, throwError} from 'rxjs';
 import {Injectable} from '@angular/core';
-import {catchError, filter, switchMap, tap} from 'rxjs/operators';
-import {Router, RouterModule} from '@angular/router';
+import {catchError, switchMap} from 'rxjs/operators';
+import {Router} from '@angular/router';
 import {AppRoutingModule} from './app-routing.module';
 
 @Injectable()
@@ -46,6 +38,6 @@ export class AuthInterceptor implements HttpInterceptor {
     }
 }
 
-export const HttpInterceptorsProvider = [{
+export const AuthInterceptorProvider = [{
     provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true,
 }]

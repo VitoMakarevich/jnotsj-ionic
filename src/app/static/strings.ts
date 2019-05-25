@@ -13,11 +13,13 @@ export class Localization {
     };
 
     public headers = {
-        signIn: 'Sign In'
+        signIn: 'Sign In',
+        notificationManagement: 'Notification Management',
     };
 
     public errorMessages = {
         fieldRequired: 'This field is required',
         passwordIsIncorrect: 'Password is incorrect',
+        tryAgainLater: 'Please try again later',
     }
 }

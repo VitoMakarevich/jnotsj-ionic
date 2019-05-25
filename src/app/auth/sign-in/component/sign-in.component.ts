@@ -1,5 +1,4 @@
 import {Component, EventEmitter, Output} from '@angular/core';
-import {Localization} from '../../../static/strings';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
@@ -13,8 +12,8 @@ export class SignInComponent {
   @Output()
   signIn = new EventEmitter()
 
-  constructor(private localization: Localization, private formBuilder: FormBuilder) {
-    this.signInForm = formBuilder.group({
+  constructor(private formBuilder: FormBuilder) {
+    this.signInForm = this.formBuilder.group({
         login: ['', Validators.required],
         password: ['', Validators.required],
     })

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {SignInPage} from './sign-in/container/sign-in.container';
-import {AppRoutingModule} from '../app-routing.module';
 
 const routes: Routes = [
     {

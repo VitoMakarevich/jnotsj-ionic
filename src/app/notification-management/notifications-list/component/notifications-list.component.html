@@ -1,0 +1,5 @@
+<ion-list lines="full">
+  <ion-virtual-scroll [items]="list" approxItemHeight="5rem">
+    <app-notification-item *virtualItem="let item" [item]="item"></app-notification-item>
+  </ion-virtual-scroll>
+</ion-list>

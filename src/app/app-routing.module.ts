@@ -15,7 +15,10 @@ const routerValues = {
 const routes: Routes = [
     {path: routerValues.root, pathMatch: 'full', redirectTo: routerValues.notificationManagement.notificationsList},
   { path: routerValues.authModule.root, loadChildren: './auth/auth.module#AuthModule' },
-  { path: routerValues.notificationManagement.notificationsList, loadChildren: './notification-management/notification-management.module#NotificationManagementModule' },
+  {
+      path: routerValues.notificationManagement.notificationsList,
+      loadChildren: './notification-management/notification-management.module#NotificationManagementModule'
+  },
 ];
 
 @NgModule({

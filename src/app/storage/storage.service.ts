@@ -1,6 +1,9 @@
-import { Injectable } from '@angular/core';
-import {Storage} from '@ionic/storage'
-import {SignInResponse, UserRole} from '../store/types/SignIn';
+import {Injectable} from '@angular/core';
+import {Storage} from '@ionic/storage';
+import {from, Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
+import {SignInResponse} from '../auth/store/types/SignIn';
+import {UserRole} from '../types/User';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +21,12 @@ export class StorageService {
   async getUser(): Promise<SignInResponse | undefined> {
     const stringUser = await this.storage.get(StorageService.UserKey)
     return stringUser ? JSON.parse(stringUser) : undefined
+  }
+
+  getUserId(): Observable<number | undefined> {
+    return from(this.getUser()).pipe(
+        map((signInResponse: SignInResponse) => signInResponse.user.id)
+    )
   }
 
   async getToken(): Promise<string | undefined> {

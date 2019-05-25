@@ -19,11 +19,15 @@ import {HttpClientModule} from '@angular/common/http';
 import {ReactiveFormsModule} from '@angular/forms';
 import {IonicStorageModule} from '@ionic/storage';
 import {StorageModule} from './storage/storage.module';
-import {ToastEffects} from './store/effects/toast';
 import {ToastComponent} from './common/toast/toast.component';
+import {HeaderComponent} from './common/header/header.component';
+import {UiApiService} from './service/ui-api.service';
+import {SpinnerComponent} from './common/spinner/spinner.component';
+import {AuthInterceptorProvider} from './authInterceptor';
+import {SpinnerInterceptorProvider} from './spinnerInterceptor';
 
 @NgModule({
-  declarations: [AppComponent, ToastComponent],
+  declarations: [AppComponent, ToastComponent, HeaderComponent, SpinnerComponent],
   entryComponents: [],
   imports: [
       BrowserModule,
@@ -31,7 +35,7 @@ import {ToastComponent} from './common/toast/toast.component';
       AppRoutingModule,
       StoreModule.forRoot(rootReducer),
       StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-      EffectsModule.forRoot([ToastEffects]),
+      EffectsModule.forRoot([]),
       HttpClientModule,
       ReactiveFormsModule,
       IonicStorageModule.forRoot({
@@ -46,6 +50,9 @@ import {ToastComponent} from './common/toast/toast.component';
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     Localization,
       ApiService,
+      UiApiService,
+      AuthInterceptorProvider,
+      SpinnerInterceptorProvider,
   ],
   bootstrap: [AppComponent]
 })

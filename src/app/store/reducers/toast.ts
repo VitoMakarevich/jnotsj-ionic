@@ -1,10 +1,4 @@
-import {User} from '../../types/User';
-import {Status} from '../../types/Status';
 import {
-    SignInActionTypeNames,
-    SignInActionTypes,
-    SignInError,
-    SignInSuccess,
     ToastActionNames,
     ToastActionTypes,
     ToastShow
