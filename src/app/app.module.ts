@@ -12,7 +12,7 @@ import {Localization} from './static/strings';
 import {StoreModule} from '@ngrx/store';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {environment} from '../environments/environment';
-import {ApiService} from './service/api.service';
+import {ApiService, UrlPrefixInjectionToken} from './service/api.service';
 import {EffectsModule} from '@ngrx/effects';
 import {HttpClientModule} from '@angular/common/http';
 import {ReactiveFormsModule} from '@angular/forms';
@@ -48,6 +48,7 @@ import {commonModuleReducer} from './store/reducers';
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+      {provide: UrlPrefixInjectionToken, useValue: environment.apiPrefix},
     Localization,
       ApiService,
       UiApiService,

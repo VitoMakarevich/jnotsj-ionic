@@ -6,7 +6,7 @@ import {NotificationDataWithAttemptedStatus} from '../store/types/notificationsL
   templateUrl: './notification-item.component.html',
   styleUrls: ['./notification-item.component.scss'],
 })
-export class NotificationItemComponent implements OnInit {
+export class NotificationItemComponent {
 
   @Input()
   item: NotificationDataWithAttemptedStatus
@@ -15,9 +15,5 @@ export class NotificationItemComponent implements OnInit {
 
   isItemDisabled() {
     return this.item.endDate.isBefore()
-  }
-
-  ngOnInit() {
-    console.log(this.item)
   }
 }
