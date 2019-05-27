@@ -10,6 +10,7 @@ import {EffectsModule} from '@ngrx/effects';
 import {AuthGuard} from './auth-guard.service';
 import {signInReducer} from './store/reducers/signIn';
 import {AuthEffects} from './store/effects/signIn';
+import {signInModuleReducer} from './store/reducers';
 
 @NgModule({
   declarations: [SignInComponent, SignInPage],
@@ -18,7 +19,7 @@ import {AuthEffects} from './store/effects/signIn';
     AuthRoutingModule,
     IonicModule,
     ReactiveFormsModule,
-      StoreModule.forFeature('signIn', signInReducer),
+      StoreModule.forFeature('authModule', signInModuleReducer),
       EffectsModule.forFeature([AuthEffects])
   ],
     providers: [AuthGuard]

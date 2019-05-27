@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {SignInRequest, SignInResponse} from '../store'
 import {Observable} from 'rxjs';
 import {NotificationData} from '../notification-management/store/types/notificationsList';
 import {NotificationAttempt} from '../notification-management/store/types/notificationAttempt';
+import {SignInRequest, SignInResponse} from '../auth/store/types/SignIn';
 
 @Injectable({
   providedIn: 'root'

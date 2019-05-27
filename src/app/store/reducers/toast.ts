@@ -5,17 +5,13 @@ import {
 } from '../actions/toast';
 
 export type ToastState = {
-    status: {
-        shown: boolean
-        text?: string
-        buttonText?: string
-    }
+    shown: boolean
+    text?: string
+    buttonText?: string
 }
 
 export const initialState: ToastState = {
-    status: {
-        shown: false
-    },
+    shown: false
 }
 
 export const toastReducer = (state: ToastState = initialState, action: ToastActionTypes): ToastState => {
@@ -23,20 +19,14 @@ export const toastReducer = (state: ToastState = initialState, action: ToastActi
         case ToastActionNames.ToastShow:
             return {
                 ...state,
-                status: {
-                    ...state.status,
-                    shown: true,
-                    text: (action as ToastShow).text,
-                    buttonText: (action as ToastShow).buttonValue,
-                }
+                shown: true,
+                text: (action as ToastShow).text,
+                buttonText: (action as ToastShow).buttonValue,
             }
         case ToastActionNames.ToastHide:
             return {
                 ...state,
-                status: {
-                    ...state.status,
-                    shown: false
-                }
+                shown: false
             }
         default:
             return state

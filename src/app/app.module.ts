@@ -10,7 +10,6 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import {Localization} from './static/strings';
 import {StoreModule} from '@ngrx/store';
-import {rootReducer} from './reducer';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {environment} from '../environments/environment';
 import {ApiService} from './service/api.service';
@@ -25,6 +24,7 @@ import {UiApiService} from './service/ui-api.service';
 import {SpinnerComponent} from './common/spinner/spinner.component';
 import {AuthInterceptorProvider} from './authInterceptor';
 import {SpinnerInterceptorProvider} from './spinnerInterceptor';
+import {commonModuleReducer} from './store/reducers';
 
 @NgModule({
   declarations: [AppComponent, ToastComponent, HeaderComponent, SpinnerComponent],
@@ -33,7 +33,7 @@ import {SpinnerInterceptorProvider} from './spinnerInterceptor';
       BrowserModule,
       IonicModule.forRoot(),
       AppRoutingModule,
-      StoreModule.forRoot(rootReducer),
+      StoreModule.forRoot(commonModuleReducer),
       StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
       EffectsModule.forRoot([]),
       HttpClientModule,

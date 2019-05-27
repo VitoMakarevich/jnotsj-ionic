@@ -1,15 +1,11 @@
 import {HeaderActionNames, HeaderActionTypes} from '../actions/header';
 
 export type HeaderState = {
-    header: {
-        text: string
-    }
+    text: string
 }
 
 export const initialState: HeaderState = {
-    header: {
-        text: '',
-    }
+    text: '',
 }
 
 export const headerReducer = (state: HeaderState = initialState, action: HeaderActionTypes): HeaderState => {
@@ -17,10 +13,7 @@ export const headerReducer = (state: HeaderState = initialState, action: HeaderA
         case HeaderActionNames.ChangeText:
             return {
                 ...state,
-                header: {
-                    ...state.header,
-                    text: action.text,
-                }
+                text: action.text,
             }
         default:
             return state

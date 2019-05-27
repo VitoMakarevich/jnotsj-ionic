@@ -1,9 +1,8 @@
-import {RootState} from '../../reducer';
 import {createSelector} from '@ngrx/store';
-
-const spinnerBranch = (state: RootState) => state.spinner
+import {commonModuleReducer} from '../reducers';
+import {commonModuleSelector} from './index';
 
 export const spinnerStateSelector = createSelector(
-    spinnerBranch,
-    state => state.status,
+    commonModuleSelector,
+    state => state.spinner,
 )

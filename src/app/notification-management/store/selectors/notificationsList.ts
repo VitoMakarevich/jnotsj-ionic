@@ -3,11 +3,15 @@ import {NotificationsListState} from '../reducers/notificationsList';
 import {createSelector} from '@ngrx/store';
 import {NotificationData} from '../types/notificationsList';
 import moment from 'moment'
+import {notificationStateSelector} from './index';
 
-export const notificationsList = (state: RootState): NotificationsListState => state.notificationsList
+export const notificationsListSelector = createSelector(
+    notificationStateSelector,
+    state => state.list
+)
 
 export const notificationsListItems = createSelector(
-    notificationsList,
+    notificationsListSelector,
     entity => entity.list.map((item: NotificationData) => ({
             ...item,
             startDate: moment(item.startDate),
@@ -16,6 +20,6 @@ export const notificationsListItems = createSelector(
 )
 
 export const notificationsListStatus = createSelector(
-    notificationsList,
+    notificationsListSelector,
     entity => entity.status,
 )

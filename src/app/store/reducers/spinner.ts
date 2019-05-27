@@ -1,15 +1,11 @@
 import {SpinnerActionNames, SpinnerActionTypes} from '../actions/spinner';
 
 export type SpinnerState = {
-    status: {
-        shown: boolean
-    }
+    shown: boolean
 }
 
 export const initialState: SpinnerState = {
-    status: {
-        shown: false
-    },
+    shown: false
 }
 
 export const spinnerReducer = (state: SpinnerState = initialState, action: SpinnerActionTypes): SpinnerState => {
@@ -17,18 +13,12 @@ export const spinnerReducer = (state: SpinnerState = initialState, action: Spinn
         case SpinnerActionNames.Show:
             return {
                 ...state,
-                status: {
-                    ...state.status,
-                    shown: true,
-                }
+                shown: true,
             }
         case SpinnerActionNames.Hide:
             return {
                 ...state,
-                status: {
-                    ...state.status,
-                    shown: false
-                }
+                shown: false
             }
         default:
             return state

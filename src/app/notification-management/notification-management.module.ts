@@ -14,6 +14,7 @@ import {NotificationItemComponent} from './notification-item/notification-item.c
 import {IonicModule} from '@ionic/angular';
 import {notificationsAttemptsByUserReducer} from './store/reducers/notificationAttempts';
 import {NotificationsAttemptsByUserEffects} from './store/effects/notificattionAttempts';
+import {notificationManagementReducer} from './store/reducers';
 
 @NgModule({
   declarations: [NotificationsListComponent, NotificationsListPage, NotificationItemComponent],
@@ -22,8 +23,7 @@ import {NotificationsAttemptsByUserEffects} from './store/effects/notificattionA
       AuthModule,
       IonicModule,
     NotificationManagementRoutingModule,
-      StoreModule.forFeature('notificationsList', notificationsListReducer),
-      StoreModule.forFeature('notificationAttemptsByUser', notificationsAttemptsByUserReducer),
+      StoreModule.forFeature('notificationManagementModule', notificationManagementReducer),
       EffectsModule.forFeature([NotificationsListEffects, NotificationsAttemptsByUserEffects])
   ]
 })

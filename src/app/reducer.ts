@@ -4,18 +4,11 @@ import {headerReducer, HeaderState} from './store/reducers/header';
 import {NotificationsListState} from './notification-management/store/reducers/notificationsList';
 import {NotificationsAttemptsByUserState} from './notification-management/store/reducers/notificationAttempts';
 import {spinnerReducer, SpinnerState} from './store/reducers/spinner';
-
-export const rootReducer = {
-    toast: toastReducer,
-    header: headerReducer,
-    spinner: spinnerReducer,
-}
+import {NotificationManagementModuleState} from './notification-management/store/reducers';
+import {CommonModuleState} from './store/reducers';
 
 export type RootState = {
-    signIn: SignInState
-    toast: ToastState
-    header: HeaderState
-    notificationsList: NotificationsListState
-    notificationAttemptsByUser: NotificationsAttemptsByUserState
-    spinner: SpinnerState
+    authModule: SignInState
+    notificationManagementModule: NotificationManagementModuleState
+    common: CommonModuleState
 }

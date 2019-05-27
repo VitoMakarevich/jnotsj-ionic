@@ -15,7 +15,6 @@ export class SpinnerInterceptor implements HttpInterceptor {
             tap(
                 (event) => {
                     if (event instanceof HttpResponse) {
-                        // debugger
                         this.uiApi.hideSpinner()
                     }
                 },
