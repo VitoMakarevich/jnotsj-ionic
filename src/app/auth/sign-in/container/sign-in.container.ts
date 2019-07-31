@@ -3,7 +3,7 @@ import {Store} from '@ngrx/store';
 import {SignInBegin} from '../../store/actions/signIn';
 import {SignInRequest} from '../../store/types/SignIn';
 import {UiApiService} from '../../../service/ui-api.service';
-import {Localization} from '../../../static/strings';
+import {Localization} from '../../../static/localization';
 import {RootState} from '../../../reducer';
 
 @Component({

@@ -8,7 +8,6 @@ import {SignInPage} from './sign-in/container/sign-in.container';
 import {StoreModule} from '@ngrx/store';
 import {EffectsModule} from '@ngrx/effects';
 import {AuthGuard} from './auth-guard.service';
-import {signInReducer} from './store/reducers/signIn';
 import {AuthEffects} from './store/effects/signIn';
 import {signInModuleReducer} from './store/reducers';
 

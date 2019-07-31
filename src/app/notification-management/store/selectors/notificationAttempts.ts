@@ -1,6 +1,4 @@
-import {RootState} from '../../../reducer';
 import {createSelector} from '@ngrx/store';
-import {NotificationsAttemptsByUserState} from '../reducers/notificationAttempts';
 import {notificationStateSelector} from './index';
 
 export const notificationsAttemptsSelector = createSelector(

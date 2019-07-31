@@ -3,7 +3,7 @@ import {Actions, Effect, ofType} from '@ngrx/effects';
 import {ApiService} from '../../../service/api.service';
 import {catchError, map, mergeMap} from 'rxjs/operators';
 import {Observable, of} from 'rxjs';
-import {Localization} from '../../../static/strings';
+import {Localization} from '../../../static/localization';
 import {UiApiService} from '../../../service/ui-api.service';
 import {
     NotificationAttemptByUserActionNames,

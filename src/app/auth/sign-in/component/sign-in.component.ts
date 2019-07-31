@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Localization} from '../../../static/strings';
+import {Localization} from '../../../static/localization';
 
 @Component({
   selector: 'app-sign-in-component',
@@ -13,7 +13,7 @@ export class SignInComponent {
   @Output()
   signIn = new EventEmitter()
 
-  constructor(private formBuilder: FormBuilder, private localization: Localization) {
+  constructor(private formBuilder: FormBuilder, public localization: Localization) {
     this.signInForm = this.formBuilder.group({
         login: ['', Validators.required],
         password: ['', Validators.required],

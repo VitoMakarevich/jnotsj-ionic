@@ -1,4 +1,3 @@
-import {RootState} from '../../reducer';
 import {createSelector} from '@ngrx/store';
 import {commonModuleSelector} from './index';
 

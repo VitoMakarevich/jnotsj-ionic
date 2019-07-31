@@ -1,5 +1,5 @@
-import {Inject, Injectable, InjectionToken, Provider} from '@angular/core';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {Inject, Injectable, InjectionToken} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {NotificationData} from '../notification-management/store/types/notificationsList';
 import {NotificationAttempt} from '../notification-management/store/types/notificationAttempt';
@@ -16,7 +16,7 @@ export class ApiService {
         return `${this.apiPrefix}${path}`
     }
 
-  constructor(private httpClient: HttpClient, @Inject(UrlPrefixInjectionToken) private apiPrefix) {}
+  constructor(private httpClient: HttpClient, @Inject(UrlPrefixInjectionToken) private apiPrefix: string) {}
 
   signIn(signInRequest: SignInRequest): Observable<SignInResponse> {
     return this.httpClient.post<SignInResponse>(this.buildUrl('/auth/signin'), signInRequest)

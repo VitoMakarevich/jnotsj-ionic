@@ -6,12 +6,14 @@ import {notificationsListItems} from '../../store/selectors/notificationsList';
 import {combineLatest, Observable, Subscription} from 'rxjs';
 import {NotificationData} from '../../store/types/notificationsList';
 import {UiApiService} from '../../../service/ui-api.service';
-import {Localization} from '../../../static/strings';
+import {Localization} from '../../../static/localization';
 import {notificationsAttemptsListItems} from '../../store/selectors/notificationAttempts';
 import {NotificationAttempt} from '../../store/types/notificationAttempt';
 import {NotificationAttemptByUserBegin} from '../../store/actions/notificationAttempts';
 import {StorageService} from '../../../storage/storage.service';
 import {tap} from 'rxjs/operators';
+
+export type NotificationWithAttempted = NotificationData & {attempted: boolean}
 
 @Component({
   selector: 'app-notifications-list',
@@ -23,8 +25,7 @@ import {tap} from 'rxjs/operators';
   `,
 })
 export class NotificationsListPage implements OnInit, OnDestroy {
-  private notificationList: Observable<NotificationData[]>
-  private notificationAttempts: Observable<NotificationAttempt[]>
+  public notificationList: Observable<NotificationWithAttempted[]>
 
   private notificationAttempts$: Subscription
 
@@ -48,14 +49,11 @@ export class NotificationsListPage implements OnInit, OnDestroy {
     this.notificationList = combineLatest(
         this.store.select(notificationsListItems),
         this.store.select(notificationsAttemptsListItems),
-        (notifications: NotificationData[], attempts: NotificationAttempt[]) => {
-            const notificationsWithAttempted = notifications.map((notification: NotificationData) => ({
+        (notifications: NotificationData[], attempts: NotificationAttempt[]): NotificationWithAttempted[] => notifications
+            .map((notification: NotificationData) => ({
                 ...notification,
                 attempted: NotificationsListPage.notificationIsAttempted(notification.id, attempts),
             }))
-
-            return notificationsWithAttempted
-        }
     )
   }
 

@@ -1,4 +1,4 @@
 <ion-item [disabled]="isItemDisabled()">
-  {{item.text}}
-  <ion-checkbox [checked]="item.attempted"></ion-checkbox>
+  <span>{{item.text}}</span>
+  <ion-checkbox slot="end" [checked]="item.attempted"></ion-checkbox>
 </ion-item>

@@ -5,16 +5,21 @@ export class Localization {
     public labels = {
         login: 'Login',
         password: 'Password',
+        startDate: 'Start Date',
+        endDate: 'End Date',
+        text: 'Text',
     };
 
     public buttonValues = {
         signIn: 'Sign In',
         ok: 'Ok',
+        save: 'Save',
     };
 
     public headers = {
         signIn: 'Sign In',
         notificationManagement: 'Notification Management',
+        createNotification: 'Create notification',
     };
 
     public errorMessages = {

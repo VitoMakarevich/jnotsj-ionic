@@ -1,0 +1,35 @@
+<ion-grid>
+  <form [formGroup]="createNotificationForm" (ngSubmit)="handleSubmit()">
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating">{{localization.labels.startDate}}</ion-label>
+          <ion-datetime formControlName="startDate" displayFormat="MMM DD, YYYY HH:mm"> </ion-datetime>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating">{{localization.labels.endDate}}</ion-label>
+          <ion-datetime formControlName="endDate" displayFormat="MMM DD, YYYY HH:mm"> </ion-datetime>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating">{{localization.labels.text}}</ion-label>
+          <ion-textarea formControlName="text"></ion-textarea>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button expand="block" type="submit" [disabled]="!createNotificationForm.valid">
+          {{localization.buttonValues.save}}
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-grid>

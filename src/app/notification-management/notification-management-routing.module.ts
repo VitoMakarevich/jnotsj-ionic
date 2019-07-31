@@ -1,17 +1,24 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {AuthModule} from '../auth/auth.module';
 import {AuthGuard} from '../auth/auth-guard.service';
-import {NotificationsListComponent} from './notifications-list/component/notifications-list.component';
-import {StoreModule} from '@ngrx/store';
-import {notificationsListReducer} from './store/reducers/notificationsList';
 import {NotificationsListPage} from './notifications-list/container/notifications-list.container';
+import {AddNotificationPage} from './add-notification/container/add-notification.container';
+
+export const routePaths = {
+    list: '',
+    create: 'create',
+}
 const routes: Routes = [
     {
-        path: '',
+        path: routePaths.list,
         component: NotificationsListPage,
         canActivate: [AuthGuard],
-    }
+    },
+    {
+        path: routePaths.create,
+        component: AddNotificationPage,
+        canActivate: [AuthGuard],
+    },
 ];
 
 @NgModule({
@@ -21,4 +28,5 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class NotificationManagementRoutingModule {
+    static routes = routePaths
 }

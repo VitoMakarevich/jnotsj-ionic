@@ -8,7 +8,7 @@ import {SignInResponse} from '../types/SignIn';
 import {StorageService} from '../../../storage/storage.service';
 import {Router} from '@angular/router';
 import {AppRoutingModule} from '../../../app-routing.module';
-import {Localization} from '../../../static/strings';
+import {Localization} from '../../../static/localization';
 import {UiApiService} from '../../../service/ui-api.service';
 
 @Injectable()

@@ -29,7 +29,7 @@ export class ToastComponent implements OnInit, OnDestroy {
         (toastState: ToastState) => {
           const {shown, text} = toastState
 
-          if (shown) {
+          if (shown && text) {
             this.presentToast(text)
           }
         }

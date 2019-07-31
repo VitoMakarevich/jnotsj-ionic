@@ -1,5 +1,3 @@
-import {RootState} from '../../../reducer';
-import {NotificationsListState} from '../reducers/notificationsList';
 import {createSelector} from '@ngrx/store';
 import {NotificationData} from '../types/notificationsList';
 import moment from 'moment'

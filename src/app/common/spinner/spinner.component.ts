@@ -11,7 +11,7 @@ import {Subscription} from 'rxjs';
 })
 export class SpinnerComponent implements OnInit, OnDestroy {
   private spinner$: Subscription;
-  private spinnerValue: boolean;
+  public spinnerValue: boolean;
 
     constructor(private store: Store<RootState>) { }
 

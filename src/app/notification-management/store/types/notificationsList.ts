@@ -7,6 +7,12 @@ export type NotificationData = {
     text: string
 }
 
+export type NotificationDataRequest = {
+    startDate: string
+    endDate: string
+    text: string
+}
+
 export type NotificationDataParsed = {
     id: number
     startDate: Moment
