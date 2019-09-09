@@ -1,5 +1,6 @@
-import {Component, Input} from '@angular/core';
-import {NotificationDataWithAttemptedStatus} from '../store/types/notificationsList';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {NotificationDataWithAttemptedStatus} from '../types/notificationsList';
+import {Localization} from '../../static/localization';
 
 @Component({
   selector: 'app-notification-item',
@@ -11,7 +12,14 @@ export class NotificationItemComponent {
   @Input()
   item: NotificationDataWithAttemptedStatus
 
-  constructor() { }
+  @Output()
+  attendNotification: EventEmitter<NotificationDataWithAttemptedStatus> = new EventEmitter()
+
+  onAttendClick() {
+    this.attendNotification.emit(this.item)
+  }
+
+  constructor(public loc: Localization) { }
 
   isItemDisabled() {
     return this.item.endDate.isBefore()

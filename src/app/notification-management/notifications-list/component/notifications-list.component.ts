@@ -1,6 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {NotificationData} from '../../store/types/notificationsList';
-import {Router} from '@angular/router';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {NotificationData} from '../../types/notificationsList';
+import {NotificationWithAttempted} from '../container/notifications-list.container';
 
 @Component({
   selector: 'app-notifications-list-component',
@@ -11,6 +11,13 @@ export class NotificationsListComponent {
 
   @Input()
   list: NotificationData[]
+
+  @Output()
+  attemptClick: EventEmitter<NotificationWithAttempted> = new EventEmitter()
+
+  onAttemptClick(item: NotificationWithAttempted) {
+    this.attemptClick.emit(item)
+  }
 
   constructor() { }
 }

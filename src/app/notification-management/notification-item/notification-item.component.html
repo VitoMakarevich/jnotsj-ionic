@@ -1,4 +1,7 @@
 <ion-item [disabled]="isItemDisabled()">
   <span>{{item.text}}</span>
-  <ion-checkbox slot="end" [checked]="item.attempted"></ion-checkbox>
+  <ion-button slot="end" [ngSwitch]="item.attempted" (click)="onAttendClick($event)">
+    <ion-text *ngSwitchCase="true">{{loc.buttonValues.disattend}}</ion-text>
+    <ion-text *ngSwitchCase="false">{{loc.buttonValues.attend}}</ion-text>
+  </ion-button>
 </ion-item>

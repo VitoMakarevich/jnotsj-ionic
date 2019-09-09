@@ -2,8 +2,8 @@ import {Moment} from 'moment';
 
 export type NotificationData = {
     id: number
-    startDate: string
-    endDate: string
+    startDate: Moment
+    endDate: Moment
     text: string
 }
 
@@ -13,13 +13,13 @@ export type NotificationDataRequest = {
     text: string
 }
 
-export type NotificationDataParsed = {
+export type NotificationDataRaw = {
     id: number
-    startDate: Moment
-    endDate: Moment
+    startDate: string
+    endDate: string
     text: string
 }
 
-export type NotificationDataWithAttemptedStatus = NotificationDataParsed & {
+export type NotificationDataWithAttemptedStatus = NotificationData & {
     attempted: boolean
 }

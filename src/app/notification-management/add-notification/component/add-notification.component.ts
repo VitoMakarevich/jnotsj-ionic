@@ -11,7 +11,7 @@ export class AddNotificationComponent implements OnInit {
   public createNotificationForm: FormGroup
 
   @Output()
-  private createNotification: EventEmitter = new EventEmitter()
+  private createNotification: EventEmitter<any> = new EventEmitter()
 
   constructor(private fb: FormBuilder, public localization: Localization) {
       this.createNotificationForm = this.fb.group({

@@ -14,6 +14,8 @@ export class Localization {
         signIn: 'Sign In',
         ok: 'Ok',
         save: 'Save',
+        attend: 'Attend',
+        disattend: 'Disattend',
     };
 
     public headers = {
@@ -21,6 +23,11 @@ export class Localization {
         notificationManagement: 'Notification Management',
         createNotification: 'Create notification',
     };
+
+    public messages = {
+      attempted: 'Attempted',
+      disattempted: 'Disattempted',
+    }
 
     public errorMessages = {
         fieldRequired: 'This field is required',
