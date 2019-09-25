@@ -38,4 +38,8 @@ export class StorageService {
       const user = await this.getUser()
       return user ? user.user.roles : undefined
   }
+
+  resetUser() {
+    return this.storage.remove(StorageService.UserKey)
+  }
 }

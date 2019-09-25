@@ -3,5 +3,8 @@
     <ion-title>
       {{headerText | async}}
     </ion-title>
+    <ion-button slot="end" (click)="this.handleSignOut()">
+      Sign out
+    </ion-button>
   </ion-toolbar>
 </ion-header>

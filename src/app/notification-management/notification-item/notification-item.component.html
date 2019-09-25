@@ -1,5 +1,8 @@
 <ion-item [disabled]="isItemDisabled()">
-  <span>{{item.text}}</span>
+  <ion-label>
+    <ion-text>{{item.text}}</ion-text>
+    <p>{{item.startDate | date:'short'}}</p>
+  </ion-label>
   <ion-button slot="end" [ngSwitch]="item.attempted" (click)="onAttendClick($event)">
     <ion-text *ngSwitchCase="true">{{loc.buttonValues.disattend}}</ion-text>
     <ion-text *ngSwitchCase="false">{{loc.buttonValues.attend}}</ion-text>

@@ -24,4 +24,8 @@ export class NotificationItemComponent {
   isItemDisabled() {
     return this.item.endDate.isBefore()
   }
+
+  getTime() {
+    return this.item.startDate
+  }
 }

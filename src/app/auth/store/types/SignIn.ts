@@ -5,8 +5,12 @@ export type SignInRequest = {
     password: string
 }
 
+export enum TokenType {
+  Bearer = 'Bearer',
+}
+
 export type SignInResponse = {
     accessToken: string
-    tokenType: 'Bearer'
+    tokenType: TokenType,
     user: User
 }
