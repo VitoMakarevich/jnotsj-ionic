@@ -10,6 +10,9 @@ import {Router} from '@angular/router';
 import {AppRoutingModule} from '../../../app-routing.module';
 import {Localization} from '../../../static/localization';
 import {UiApiService} from '../../../service/ui-api.service';
+import { HttpErrorResponse } from '@angular/common/http'
+import { constants } from 'http2'
+import HTTP_STATUS_UNAUTHORIZED = module
 
 @Injectable()
 export class AuthEffects {
@@ -27,11 +30,13 @@ export class AuthEffects {
         mergeMap((action: SignInBegin): Observable<any> => this.api.signIn(action.signInRequest).pipe(
             tap((signInResponse: SignInResponse) => this.saveResponseToStorage(signInResponse)),
             map((signInResponse: SignInResponse) => new SignInSuccess(signInResponse.user)),
-            catchError((error: Error) => {
-                this.uiApi.showToast(
+            catchError((error: HttpErrorResponse) => {
+                if (error.status === HTTP_STATUS_UNAUTHORIZED) {
+                  this.uiApi.showToast(
                     this.localization.errorMessages.passwordIsIncorrect,
                     this.localization.buttonValues.ok,
-                )
+                  )
+                }
                 return of(new SignInError(error))
             }),
         ))

@@ -28,6 +28,7 @@ export class AuthInterceptor implements HttpInterceptor {
                         catchError((httpErrorResponse: HttpErrorResponse) => {
                             if (httpErrorResponse.status === 401) {
                                 this.router.navigate([`/${AppRoutingModule.routes.authModule.signIn}`])
+                                this.storageService.resetUser()
                             }
 
                             return throwError(httpErrorResponse)
